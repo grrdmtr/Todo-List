@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header {
+  height: 8vh;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #DC4B3C
+}
+
+#addTodo {
+  background-color: #E26F65;
+  border-radius: 8px;
+  border-style: none;
+  color: white;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+#addTodo:hover,
+#addTodo:focus {
+  background-color: #eab9b5;
+}
+
+[class^="todo-"] {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 60vw 20vw 20vw;
+  color: #4a4a4a;
+  border-radius: 8px;
+  background-color: #dc4a3c29;
+  padding: 10px 16px;
+  margin: 10px;
+}
+
+.title {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+
+.description {
+  grid-column: 1 / 2;
+  grid-row: 2;
+}
+
+.date {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+
