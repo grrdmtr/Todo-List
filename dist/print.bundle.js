@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst todoFactory = (title, description, date) => {\n  // const title = prompt('Insert task title');\n  // const description = prompt('Insert task description');\n  // const date = prompt('Insert deadline (dd-mm-yyyy)');\n  // const priority = prompt('Insert priority (low, medium, high)');\n\nreturn { title, description, date };\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoFactory);\n\n\n//# sourceURL=webpack://todo-list/./src/todos.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst todoFactory = (title, details, date, project) => {\n\nreturn { title, details, date, project };\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoFactory);\n\n\n\n//# sourceURL=webpack://todo-list/./src/todos.js?");
 
 /***/ })
 

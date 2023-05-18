@@ -1,10 +1,7 @@
-const todoFactory = (title, description, date) => {
-  // const title = prompt('Insert task title');
-  // const description = prompt('Insert task description');
-  // const date = prompt('Insert deadline (dd-mm-yyyy)');
-  // const priority = prompt('Insert priority (low, medium, high)');
+const todoFactory = (title, details, date, project) => {
 
-return { title, description, date };
+return { title, details, date, project };
 }
 
 export default todoFactory;
+
