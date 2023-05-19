@@ -1,27 +1,27 @@
 export default {
   setUpPage() {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('wrapper');
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("wrapper");
 
-    const header = document.createElement('header');
-    
-    const todoBtn = document.createElement('button');
-    todoBtn.setAttribute('id','addTodo');
-    todoBtn.innerHTML = 'Add todo';
+    const header = document.createElement("header");
+
+    const todoBtn = document.createElement("button");
+    todoBtn.setAttribute("id", "addTodo");
+    todoBtn.innerHTML = "Add todo";
 
     header.appendChild(todoBtn);
-  
-    const container = document.createElement('div');
-    container.classList.add('container');
 
-    const projects = document.createElement('div');
-    projects.classList.add('projects');
+    const container = document.createElement("div");
+    container.classList.add("container");
 
-    const todos = document.createElement('div');
-    todos.classList.add('todos');
+    const projects = document.createElement("div");
+    projects.classList.add("projects");
 
-    const opacity = document.createElement('div');
-    opacity.classList.add('opacity');
+    const todos = document.createElement("div");
+    todos.classList.add("todos");
+
+    const opacity = document.createElement("div");
+    opacity.classList.add("opacity");
 
     document.body.appendChild(wrapper);
     wrapper.appendChild(header);
@@ -31,13 +31,11 @@ export default {
     container.appendChild(todos);
     container.appendChild(this.todoForm());
     container.appendChild(this.editForm());
-
-
   },
   editForm() {
-    const form = document.createElement('form');
-    form.setAttribute('id', 'editForm');
-    
+    const form = document.createElement("form");
+    form.setAttribute("id", "editForm");
+
     // Create an input element for Full Name
     const title = document.createElement("input");
     title.setAttribute("type", "text");
@@ -54,22 +52,21 @@ export default {
     dueDate.setAttribute("name", "editDate");
     dueDate.setAttribute("placeholder", "Due date");
 
-    const project = document.createElement('input');
-    project.setAttribute('list', 'editProject');
-    project.setAttribute('placeholder', 'Choose project');
+    const project = document.createElement("input");
+    project.setAttribute("list", "editProject");
+    project.setAttribute("placeholder", "Choose project");
 
-    const projectList = document.createElement('datalist');
-    projectList.setAttribute('id', 'project');
+    const projectList = document.createElement("datalist");
+    projectList.setAttribute("id", "project");
 
+    const submit = document.createElement("button");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("id", "submitEdit");
+    submit.innerHTML = "Submit";
 
-    const submit = document.createElement('button');
-    submit.setAttribute('type', 'submit');
-    submit.setAttribute('id','submitEdit');
-    submit.innerHTML = 'Submit';
-
-    const closeBtn = document.createElement('button');
-    closeBtn.setAttribute('id','closeBtn');
-    closeBtn.innerHTML = 'X';
+    const closeBtn = document.createElement("button");
+    closeBtn.setAttribute("id", "closeBtn");
+    closeBtn.innerHTML = "X";
 
     form.appendChild(title);
     form.appendChild(details);
@@ -83,9 +80,9 @@ export default {
   },
   todoForm() {
     // Create a form dynamically
-    const form = document.createElement('form');
-    form.setAttribute('id', 'todoForm');
-    
+    const form = document.createElement("form");
+    form.setAttribute("id", "todoForm");
+
     // Create an input element for Full Name
     const title = document.createElement("input");
     title.setAttribute("type", "text");
@@ -102,22 +99,21 @@ export default {
     dueDate.setAttribute("name", "date");
     dueDate.setAttribute("placeholder", "Due date");
 
-    const project = document.createElement('input');
-    project.setAttribute('list', 'project');
-    project.setAttribute('placeholder', 'New project or select existing one');
+    const project = document.createElement("input");
+    project.setAttribute("list", "project");
+    project.setAttribute("placeholder", "New project or select existing one");
 
-    const projectList = document.createElement('datalist');
-    projectList.setAttribute('id', 'project');
+    const projectList = document.createElement("datalist");
+    projectList.setAttribute("id", "project");
 
+    const submit = document.createElement("button");
+    submit.setAttribute("type", "submit");
+    submit.setAttribute("id", "submit");
+    submit.innerHTML = "Submit";
 
-    const submit = document.createElement('button');
-    submit.setAttribute('type', 'submit');
-    submit.setAttribute('id','submit');
-    submit.innerHTML = 'Submit';
-
-    const closeBtn = document.createElement('button');
-    closeBtn.setAttribute('id','closeBtn');
-    closeBtn.innerHTML = 'X';
+    const closeBtn = document.createElement("button");
+    closeBtn.setAttribute("id", "closeBtn");
+    closeBtn.innerHTML = "X";
 
     form.appendChild(title);
     form.appendChild(details);
@@ -130,128 +126,127 @@ export default {
     return form;
   },
   allProjects(arr) {
-    const projects = document.getElementsByClassName('projects')[0];
-    const title = document.createElement('h3');
-    title.innerHTML = '🚀 Projects:'
+    const projects = document.getElementsByClassName("projects")[0];
+    const title = document.createElement("h3");
+    title.innerHTML = "🚀 Projects:";
     projects.appendChild(title);
 
-    const projectList = document.getElementById('project');
+    const projectList = document.getElementById("project");
     if (arr.length > 0) {
       arr.forEach((project, index) => {
         if (!document.getElementsByClassName(`project-${index}`)[0]) {
-          const option = document.createElement('option')
-          option.setAttribute('value', `${project}`);
+          const option = document.createElement("option");
+          option.setAttribute("value", `${project}`);
 
           projectList.appendChild(option);
 
-          const projectCard = document.createElement('div');
+          const projectCard = document.createElement("div");
           projectCard.classList.add(`project-${index}`);
           projects.appendChild(projectCard);
 
-          const title = document.createElement('div');
-          title.classList.add('projectTitle');
-          title.innerHTML = `${index + 1}. ${project}`;
-          projectCard.appendChild(title);
+          const projectTitle = document.createElement("div");
+          projectTitle.classList.add("projectTitle");
+          projectTitle.innerHTML = `${index + 1}. ${project}`;
+          projectCard.appendChild(projectTitle);
         }
-      })
+      });
     }
   },
   allTodos(arr) {
-    const todos = document.getElementsByClassName('todos')[0];
-    const title = document.createElement('h3');
-    title.innerHTML = 'Todo list:'
+    const todos = document.getElementsByClassName("todos")[0];
+    const title = document.createElement("h3");
+    title.innerHTML = "Todo list:";
     todos.appendChild(title);
 
     if (arr.length > 0) {
       arr.forEach((todo, index) => {
         if (!document.getElementsByClassName(`todo-${index}`)[0]) {
-          const todoCard = document.createElement('div');
+          const todoCard = document.createElement("div");
           todoCard.classList.add(`todo-${index}`);
           todos.appendChild(todoCard);
 
-          const edit = document.createElement('button');
-          edit.setAttribute('id', 'edit');
-          edit.setAttribute('value', `${index}`);
-          edit.innerHTML = 'edit';
+          const edit = document.createElement("button");
+          edit.setAttribute("id", "edit");
+          edit.setAttribute("value", `${index}`);
+          edit.innerHTML = "edit";
           todoCard.appendChild(edit);
 
+          const todoTitle = document.createElement("div");
+          todoTitle.classList.add("title");
 
-          const title = document.createElement('div');
-          title.classList.add('title');
-          
-          title.innerHTML = `${todo.title}`;
+          todoTitle.innerHTML = `${todo.title}`;
 
-          const checkbox = document.createElement('input');
-          checkbox.setAttribute('type', 'checkbox');
-          checkbox.classList.add('default');
-          checkbox.setAttribute('value', `${index}`);
+          const checkbox = document.createElement("input");
+          checkbox.setAttribute("type", "checkbox");
+          checkbox.classList.add("default");
+          checkbox.setAttribute("value", `${index}`);
           if (todo.completed) {
             checkbox.checked = true;
-            title.classList.toggle('done')
+            todoTitle.classList.toggle("done");
           }
           todoCard.appendChild(checkbox);
-          todoCard.appendChild(title);
+          todoCard.appendChild(todoTitle);
 
-          const content = document.createElement('div');
-          content.classList.add('content');
+          const content = document.createElement("div");
+          content.classList.add("content");
           todoCard.appendChild(content);
 
-          const details = document.createElement('div');
-          details.classList.add('details');
+          const details = document.createElement("div");
+          details.classList.add("details");
           details.innerHTML = `Details: ${todo.details}`;
           content.appendChild(details);
-          
-          const dueDate = document.createElement('div');
-          dueDate.classList.add('date');
+
+          const dueDate = document.createElement("div");
+          dueDate.classList.add("date");
           dueDate.innerHTML = `Due date: ${todo.date}`;
           content.appendChild(dueDate);
 
-          const project = document.createElement('div');
-          project.classList.add('project');
+          const project = document.createElement("div");
+          project.classList.add("project");
           project.innerHTML = `Project: ${todo.project}`;
           content.appendChild(project);
 
-          edit.addEventListener('click', function() {
-            const form = document.getElementById('editForm');
-            form.style.display = 'grid';
+          edit.addEventListener("click", () => {
+            const form = document.getElementById("editForm");
+            form.style.display = "grid";
 
-            const title = document.querySelector('[name=editTitle]');
-            title.setAttribute('value', `${todo.title}`);
-            const details = document.querySelector('[name=editdetails]');
-            details.setAttribute('value', `${todo.details}`);
-            const date = document.querySelector('[name=editDate]');
-            date.setAttribute('value', `${todo.date}`);
-            const project = document.querySelector('[list=editProject]');
-            project.setAttribute('value', `${todo.project}`);
+            const title = document.querySelector("[name=editTitle]");
+            title.setAttribute("value", `${todo.title}`);
+            const details = document.querySelector("[name=editdetails]");
+            details.setAttribute("value", `${todo.details}`);
+            const date = document.querySelector("[name=editDate]");
+            date.setAttribute("value", `${todo.date}`);
+            const project = document.querySelector("[list=editProject]");
+            project.setAttribute("value", `${todo.project}`);
 
-            const opacity = document.getElementsByClassName('opacity')[0];
-            opacity.style.display = 'block';
+            const opacity = document.getElementsByClassName("opacity")[0];
+            opacity.style.display = "block";
 
-            const submitEdit = document.getElementById('submitEdit');
-            submitEdit.setAttribute('value',`${index}`);
-          })
+            const submitEdit = document.getElementById("submitEdit");
+            submitEdit.setAttribute("value", `${index}`);
+          });
 
-          title.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const content = this.nextElementSibling;
-            if (content.style.display === "grid") {
-              content.style.display = "none";
+          title.addEventListener("click", function () {
+            this.classList.toggle("active");
+            const contentBox = this.nextElementSibling;
+            if (contentBox.style.display === "grid") {
+              contentBox.style.display = "none";
             } else {
-              content.style.display = "grid";
+              contentBox.style.display = "grid";
             }
-          })
+          });
 
-          checkbox.addEventListener('click', function() {
-            const title = this.nextElementSibling;
-            title.classList.toggle('done');
-          })
+          checkbox.addEventListener("click", function () {
+            const contentBox = this.nextElementSibling;
+            contentBox.classList.toggle("done");
+          });
         }
-      })
+      });
     }
   },
   clear(parent) {
     while (parent.firstChild) {
       parent.removeChild(parent.firstChild);
-  }
-  }
-}
+    }
+  },
+};

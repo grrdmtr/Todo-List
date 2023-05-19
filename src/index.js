@@ -1,53 +1,50 @@
 import './style.css';
-import '@fortawesome/fontawesome-free/js/all.js';
-import display from './display-controller.js';
-import { todoFactory, getProjects, toggleCompleted } from './todos.js';
+import display from './display-controller';
+import { todoFactory, getProjects, toggleCompleted } from './todos';
 
 const todos = JSON.parse(localStorage.getItem('todos')) || [];
-
 const projects = getProjects(todos) || [];
 
 display.setUpPage();
 
-let addTodoBtn = document.getElementById('addTodo');
+const addTodoBtn = document.getElementById('addTodo');
 addTodoBtn.onclick = () => {
   const form = document.getElementById('todoForm');
   form.style.display = 'grid';
   const opacity = document.getElementsByClassName('opacity')[0];
   opacity.style.display = 'block';
-}
+};
 
-let closeBtn = document.querySelectorAll('#closeBtn');
+const closeBtn = document.querySelectorAll('#closeBtn');
 closeBtn.forEach((button) => {
-  button.addEventListener('click', function(e) {
-  e.preventDefault();
+  button.addEventListener('click', (e) => {
+    e.preventDefault();
 
-  const form = document.getElementById('todoForm');
-  form.style.display = 'none';
-  const editForm = document.getElementById('editForm');
-  editForm.style.display = 'none';
-  const opacity = document.getElementsByClassName('opacity')[0];
-  opacity.style.display = 'none';
-  })
+    const form = document.getElementById('todoForm');
+    form.style.display = 'none';
+    const editForm = document.getElementById('editForm');
+    editForm.style.display = 'none';
+    const opacity = document.getElementsByClassName('opacity')[0];
+    opacity.style.display = 'none';
+  });
 });
 
 const todoContainer = document.getElementsByClassName('todos')[0];
 const projectsContainer = document.getElementsByClassName('projects')[0];
 
-let submitBtn = document.getElementById('submit');
+const submitBtn = document.getElementById('submit');
 submitBtn.onclick = (e) => {
   e.preventDefault();
 
-  let title = document.querySelector('[name=title]').value;
-  let details = document.querySelector('[name=details]').value;
-  let date = document.querySelector('[name=date]').value;
-  let project = document.querySelector('[list=project]').value;
-  let todo = todoFactory(title, details, date, project);
+  const title = document.querySelector('[name=title]').value;
+  const details = document.querySelector('[name=details]').value;
+  const date = document.querySelector('[name=date]').value;
+  const project = document.querySelector('[list=project]').value;
+  const todo = todoFactory(title, details, date, project);
 
-  if (!projects.find(element => element == project)) {
+  if (!projects.find((element) => element === project)) {
     projects.push(project);
   }
-  
 
   todos.push(todo);
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -62,17 +59,17 @@ submitBtn.onclick = (e) => {
   form.style.display = 'none';
   const opacity = document.getElementsByClassName('opacity')[0];
   opacity.style.display = 'none';
-}
+};
 
-let sumbitEditBtn = document.getElementById('submitEdit');
+const sumbitEditBtn = document.getElementById('submitEdit');
 
-sumbitEditBtn.addEventListener('click', function(e) {
+sumbitEditBtn.addEventListener('click', function (e) {
   e.preventDefault();
 
-  let title = document.querySelector('[name=editTitle]').value;
-  let details = document.querySelector('[name=editdetails]').value;
-  let date = document.querySelector('[name=editDate]').value;
-  let project = document.querySelector('[list=editProject]').value;
+  const title = document.querySelector('[name=editTitle]').value;
+  const details = document.querySelector('[name=editdetails]').value;
+  const date = document.querySelector('[name=editDate]').value;
+  const project = document.querySelector('[list=editProject]').value;
 
   todos[this.value] = todoFactory(title, details, date, project);
   localStorage.setItem('todos', JSON.stringify(todos));
@@ -94,24 +91,24 @@ sumbitEditBtn.addEventListener('click', function(e) {
   form.style.display = 'none';
   const opacity = document.getElementsByClassName('opacity')[0];
   opacity.style.display = 'none';
-})
+});
 
-let editBtn = document.getElementById('addTodo');
+const editBtn = document.getElementById('addTodo');
 editBtn.onclick = () => {
   const form = document.getElementById('todoForm');
   form.style.display = 'grid';
   const opacity = document.getElementsByClassName('opacity')[0];
   opacity.style.display = 'block';
-}
+};
 
 display.allTodos(todos);
 display.allProjects(projects);
 
-const checkboxes = document.querySelectorAll('input[type=checkbox]')
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
 
-checkboxes.forEach((checkbox, index) => { 
-  checkbox.addEventListener('click', function() {
+checkboxes.forEach((checkbox, index) => {
+  checkbox.addEventListener('click', () => {
     toggleCompleted(todos, index);
     localStorage.setItem('todos', JSON.stringify(todos));
-  })
-})
+  });
+});
