@@ -16,7 +16,7 @@
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst todoFactory = (title, details, date, project) => {\n\nreturn { title, details, date, project };\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (todoFactory);\n\n\n\n//# sourceURL=webpack://todo-list/./src/todos.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"getProjects\": () => (/* binding */ getProjects),\n/* harmony export */   \"todoFactory\": () => (/* binding */ todoFactory),\n/* harmony export */   \"toggleCompleted\": () => (/* binding */ toggleCompleted)\n/* harmony export */ });\nconst todoFactory = (title, details, date, project) => {\n\nreturn { title, details, date, project, completed: false };\n}\n\nconst getProjects = array => {\n  let projects = [];\n  array.forEach(element => {\n    projects.push(element.project)\n  });\n  const uniqProjects = [...new Set(projects)];\n\n  return uniqProjects;\n}\n\nconst toggleCompleted = (array, index) => {\n  array[index].completed = !array[index].completed;\n}\n\n\n\n\n//# sourceURL=webpack://todo-list/./src/todos.js?");
 
 /***/ })
 

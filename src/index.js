@@ -1,11 +1,11 @@
 import './style.css';
 import '@fortawesome/fontawesome-free/js/all.js';
 import display from './display-controller.js';
-import todoFactory from './todos.js';
+import { todoFactory, getProjects, toggleCompleted } from './todos.js';
 
-const todos = [];
+const todos = JSON.parse(localStorage.getItem('todos')) || [];
 
-const projects = [];
+const projects = getProjects(todos) || [];
 
 display.setUpPage();
 
@@ -48,12 +48,15 @@ submitBtn.onclick = (e) => {
     projects.push(project);
   }
   
-  const uniqProjects = [...new Set(projects)];
+
   todos.push(todo);
+  localStorage.setItem('todos', JSON.stringify(todos));
+
   display.clear(todoContainer);
   display.clear(projectsContainer);
   display.allTodos(todos);
-  display.allProjects(uniqProjects);
+  display.allProjects(getProjects(todos));
+
   const form = document.getElementById('todoForm');
   form.reset();
   form.style.display = 'none';
@@ -70,19 +73,22 @@ sumbitEditBtn.addEventListener('click', function(e) {
   let details = document.querySelector('[name=editdetails]').value;
   let date = document.querySelector('[name=editDate]').value;
   let project = document.querySelector('[list=editProject]').value;
+
+  todos[this.value] = todoFactory(title, details, date, project);
+  localStorage.setItem('todos', JSON.stringify(todos));
+
   const todo = todos[this.value];
   projects[this.value] = project;
+
   todo.title = title;
   todo.details = details;
   todo.date = date;
   todo.project = project;
 
-  const uniqProjects = [...new Set(projects)];
-
   display.clear(todoContainer);
   display.clear(projectsContainer);
   display.allTodos(todos);
-  display.allProjects(uniqProjects);
+  display.allProjects(getProjects(todos));
   const form = document.getElementById('editForm');
   form.reset();
   form.style.display = 'none';
@@ -97,3 +103,15 @@ editBtn.onclick = () => {
   const opacity = document.getElementsByClassName('opacity')[0];
   opacity.style.display = 'block';
 }
+
+display.allTodos(todos);
+display.allProjects(projects);
+
+const checkboxes = document.querySelectorAll('input[type=checkbox]')
+
+checkboxes.forEach((checkbox, index) => { 
+  checkbox.addEventListener('click', function() {
+    toggleCompleted(todos, index);
+    localStorage.setItem('todos', JSON.stringify(todos));
+  })
+})

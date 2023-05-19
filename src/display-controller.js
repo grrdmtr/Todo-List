@@ -17,16 +17,8 @@ export default {
     const projects = document.createElement('div');
     projects.classList.add('projects');
 
-    const title = document.createElement('h3');
-    title.innerHTML = '🚀 Projects:'
-    projects.appendChild(title);
-
     const todos = document.createElement('div');
     todos.classList.add('todos');
-
-    const todoTitle = document.createElement('h3');
-    todoTitle.innerHTML = 'Todo list:'
-    todos.appendChild(todoTitle);
 
     const opacity = document.createElement('div');
     opacity.classList.add('opacity');
@@ -39,6 +31,8 @@ export default {
     container.appendChild(todos);
     container.appendChild(this.todoForm());
     container.appendChild(this.editForm());
+
+
   },
   editForm() {
     const form = document.createElement('form');
@@ -181,15 +175,21 @@ export default {
           edit.innerHTML = 'edit';
           todoCard.appendChild(edit);
 
-          const checkbox = document.createElement('input');
-          checkbox.setAttribute('type', 'checkbox');
-          checkbox.classList.add('default');
-          todoCard.appendChild(checkbox);
 
           const title = document.createElement('div');
           title.classList.add('title');
           
-          title.innerHTML = `Title: ${todo.title}`;
+          title.innerHTML = `${todo.title}`;
+
+          const checkbox = document.createElement('input');
+          checkbox.setAttribute('type', 'checkbox');
+          checkbox.classList.add('default');
+          checkbox.setAttribute('value', `${index}`);
+          if (todo.completed) {
+            checkbox.checked = true;
+            title.classList.toggle('done')
+          }
+          todoCard.appendChild(checkbox);
           todoCard.appendChild(title);
 
           const content = document.createElement('div');
